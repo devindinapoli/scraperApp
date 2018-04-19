@@ -28,7 +28,7 @@ console.log(MONGODB_URI)
 
 app.get("/scrape", function(req, res) {
 
-  axios.get("http://www.gamespot.com/").then(function(response) {
+  axios.get("https://www.gamespot.com/").then(function(response) {
 
   var $ = cheerio.load(response.data);
 
