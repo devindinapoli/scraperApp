@@ -1,9 +1,40 @@
 img {
-    width: 150px;
-    height: 150px;
+  float: left;
+  width: 250;
+  height: 200px;
+}
+a {
+  font-size: 25px;
+  margin-top: 75px;
+  color: black;
 }
 #articles {
-    font-size: 8px;
-    height: 250px;
-    overflow: scroll;
+  height: 400px;
+  overflow: scroll;
+  text-align: center;
+  background-color: aliceblue;
+  border-radius: 10px;
+}
+.articleInfo {
+  margin-top: 10px;
+}
+body {
+  background-color: lightslategray;
+  text-align: center;
+}
+#notes {
+  color: aliceblue;
+}
+button {
+  color: black;
+}
+textarea {
+  height: 150px;
+}
+#scrapeArticles {
+  margin-top: 25px;
+  border-radius: 3px;
+  border-color: black;
+  background-color: whitesmoke;
+  font-size: 24px;
 }
