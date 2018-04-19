@@ -28,26 +28,31 @@ console.log(MONGODB_URI)
 
 app.get("/scrape", function(req, res) {
 
-  axios.get("https://www.gamespot.com/").then(function(response) {
+  axios.get("https://liveforlivemusic.com/").then(function(response) {
 
   var $ = cheerio.load(response.data);
 
-    $("article").each(function(i, element) {
+    $("li").each(function(i, element) {
 
         var result = {};
 
         result.link = $(this)
+        .children("div")
+        .children("div")
         .children("a")
         .attr("href");
         
         result.title = $(this)
+        .children("div")
+        .children("div")
+        .children("h3")
         .children("a")
-        .attr("data-event-title");
+        .text();
 
         result.image = $(this)
-        .children("a")
-        .children("figure")
         .children("div")
+        .children("div")
+        .children("a")
         .children("img")
         .attr("src");
        
