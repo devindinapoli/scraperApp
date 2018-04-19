@@ -28,35 +28,28 @@ console.log(MONGODB_URI)
 
 app.get("/scrape", function(req, res) {
 
-  axios.get("http://www.echojs.com/").then(function(response) {
+  axios.get("http://www.gamespot.com/news").then(function(response) {
 
   var $ = cheerio.load(response.data);
 
-    $("article h2").each(function(i, element) {
+    $("article").each(function(i, element) {
 
-      var result = {};
-      
-      result.title = $(this)
-        .children("a")
-        .text();
-      result.link = $(this)
+        var result = {};
+
+        result.link = $(this)
         .children("a")
         .attr("href");
-
-        //result.link = $(this)
-        //.children("a")
-        //.attr("href");
         
-        //result.title = $(this)
-        //.children("a")
-        //.attr("data-event-title");
+        result.title = $(this)
+        .children("a")
+        .attr("data-event-title");
 
-        //result.image = $(this)
-        //.children("a")
-        //.children("figure")
-        //.children("div")
-        //.children("img")
-        //.attr("src");
+        result.image = $(this)
+        .children("a")
+        .children("figure")
+        .children("div")
+        .children("img")
+        .attr("src");
        
         db.Article.create(result)
         .then(function(dbArticle) {
